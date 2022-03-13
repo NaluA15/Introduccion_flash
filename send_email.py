@@ -12,13 +12,13 @@ msg= EmailMessage()
 msg.set_content('Eres una perra')
 
 msg['Subject']='Mi perra'
-msg['From']='shaydruano2020@itp.edu.co'
+msg['From']='fabiohernandez2020@itp.edu.co'
 msg['To']='cristianrobles2020@itp.edu.co'
 
 #=======================================================================
 
-username = 'shaydruano2020@itp.edu.co'
-password = 'contraseña'
+username = 'fabiohernandez2020@itp.edu.co'
+password = '1006814041'
 
 server = SMTP('smtp.gmail.com:587')
 server.starttls()
