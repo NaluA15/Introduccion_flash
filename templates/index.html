@@ -1,29 +1,54 @@
-<!DOCTYPE html><!--es lo de la version(esto es la html)-->
-<html lang="es"><!--el lenuaje con lo que vamos a trabajar(la pagina esta en ingles(en) español(es))-->
-<head>
-    <meta charset="UTF-8"><!--caracteres especiales-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--adaptar cualquier tamaño de pantalla-->
-    <title>Inicio</title>
-</head>
-<body>
-    <h1>Productos</h1>
-    <a href="{{url_for('formCrearProducto')}}">Nuevo</a><br>
+{% extends 'base.html' %} 
 
-    <table border="10">
-        <tr>
-            <td>ID</td>
-            <td>NOMBRE</td>
-            <td>PRECIO</td>
-        </tr>
+{% block titulo %} 
+    Inicio 
+{% endblock %} 
 
-        {% for producto in productos %}
-        <tr>
-            <td>{{producto['id']}}</td>
-            <td>{{producto['nombre']}}</td>
-            <td>{{producto['price']}}</td>
-        </tr>
-        {% endfor %}
-        
-    </table>
-</body>
-</html>
+{% block contenido %}
+<center>
+  <h1>En la pagina de inicio desde una template</h1>
+  <br />
+  <h1>Productos</h1>
+  <br />
+</center>
+
+<a href="{{url_for('formCrearProducto')}}"
+  >&nbsp&nbsp&nbsp<button>CREAR PRODUCTO</button></a
+><br /><br /><br />
+
+<div class="col-8">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-1" scope="col">ID</th>
+        <th class="col-4" scope="col">NOMBRE</th>
+        <th class="col-2" scope="col">PRECIO</th>
+        <th class="col-1" scope="col" colspan="2">
+          <center>HERRAMIENTAS</center>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+      <tr>
+        <td>{{ producto["id"]}}</td>
+        <td>{{ producto["nombre"]}}</td>
+        <td>{{ producto["price"]}}</td>
+        <td>
+          <center>
+            <a href="/editarProducto/{{producto['id']}}"
+              ><button>Editar</button></a
+            >
+          </center>
+        </td>
+        <td>
+          <center>
+            <a href="/eliminar/{{producto['id']}}"><button>Eliminar</button></a>
+          </center>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
